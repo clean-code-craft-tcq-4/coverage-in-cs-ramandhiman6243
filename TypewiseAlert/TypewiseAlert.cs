@@ -2,9 +2,6 @@
 {
     public class TypewiseAlert
     {
-        static void Main()
-        {
 
-        }
     }
 }

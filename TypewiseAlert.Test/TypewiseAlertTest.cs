@@ -8,8 +8,7 @@ namespace TypewiseAlert.Test
     [Fact]
     public void InfersBreachAsPerLimits()
     {
-      Assert.True(TypewiseAlert.inferBreach(12, 20, 30) ==
-        TypewiseAlert.BreachType.TOO_LOW);
+      Assert.True(BreachChecker.inferBreach(12, 20, 30) == BreachType.TOO_LOW);
     }
   }
 }

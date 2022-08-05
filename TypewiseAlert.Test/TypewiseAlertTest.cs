@@ -31,13 +31,13 @@ namespace TypewiseAlert.Test
         {
             BatteryCharacter batteryCharacter = new BatteryCharacter();
             batteryCharacter.coolingType = CoolingType.PASSIVE_COOLING;
-            Assert.True(Alerter.checkTemperatureBreach(batteryCharacter, 36) == BreachType.TOO_HIGH);
+            Assert.True(TypewiseAlert.checkTemperatureBreach(batteryCharacter, 36) == BreachType.TOO_HIGH);
 
             batteryCharacter.coolingType = CoolingType.HI_ACTIVE_COOLING;
-            Assert.True(Alerter.checkTemperatureBreach(batteryCharacter, 46) == BreachType.TOO_HIGH);
+            Assert.True(TypewiseAlert.checkTemperatureBreach(batteryCharacter, 46) == BreachType.TOO_HIGH);
 
             batteryCharacter.coolingType = CoolingType.MED_ACTIVE_COOLING;
-            Assert.True(Alerter.checkTemperatureBreach(batteryCharacter, 41) == BreachType.TOO_HIGH);
+            Assert.True(TypewiseAlert.checkTemperatureBreach(batteryCharacter, 41) == BreachType.TOO_HIGH);
         }
 
         [Fact]
@@ -45,13 +45,13 @@ namespace TypewiseAlert.Test
         {
             BatteryCharacter batteryCharacter = new BatteryCharacter();
             batteryCharacter.coolingType = CoolingType.PASSIVE_COOLING;
-            Assert.True(Alerter.checkTemperatureBreach(batteryCharacter, -1) == BreachType.TOO_LOW);
+            Assert.True(TypewiseAlert.checkTemperatureBreach(batteryCharacter, -1) == BreachType.TOO_LOW);
 
             batteryCharacter.coolingType = CoolingType.HI_ACTIVE_COOLING;
-            Assert.True(Alerter.checkTemperatureBreach(batteryCharacter, -1) == BreachType.TOO_LOW);
+            Assert.True(TypewiseAlert.checkTemperatureBreach(batteryCharacter, -1) == BreachType.TOO_LOW);
 
             batteryCharacter.coolingType = CoolingType.MED_ACTIVE_COOLING;
-            Assert.True(Alerter.checkTemperatureBreach(batteryCharacter, -1) == BreachType.TOO_LOW);
+            Assert.True(TypewiseAlert.checkTemperatureBreach(batteryCharacter, -1) == BreachType.TOO_LOW);
         }
 
         [Fact]
@@ -59,19 +59,19 @@ namespace TypewiseAlert.Test
         {
             BatteryCharacter batteryCharacter = new BatteryCharacter();
             batteryCharacter.coolingType = CoolingType.PASSIVE_COOLING;
-            Assert.True(Alerter.checkTemperatureBreach(batteryCharacter, 0) == BreachType.NORMAL);
-            Assert.True(Alerter.checkTemperatureBreach(batteryCharacter, 15) == BreachType.NORMAL);
-            Assert.True(Alerter.checkTemperatureBreach(batteryCharacter, 35) == BreachType.NORMAL);
+            Assert.True(TypewiseAlert.checkTemperatureBreach(batteryCharacter, 0) == BreachType.NORMAL);
+            Assert.True(TypewiseAlert.checkTemperatureBreach(batteryCharacter, 15) == BreachType.NORMAL);
+            Assert.True(TypewiseAlert.checkTemperatureBreach(batteryCharacter, 35) == BreachType.NORMAL);
 
             batteryCharacter.coolingType = CoolingType.HI_ACTIVE_COOLING;
-            Assert.True(Alerter.checkTemperatureBreach(batteryCharacter, 0) == BreachType.NORMAL);
-            Assert.True(Alerter.checkTemperatureBreach(batteryCharacter, 25) == BreachType.NORMAL);
-            Assert.True(Alerter.checkTemperatureBreach(batteryCharacter, 45) == BreachType.NORMAL);
+            Assert.True(TypewiseAlert.checkTemperatureBreach(batteryCharacter, 0) == BreachType.NORMAL);
+            Assert.True(TypewiseAlert.checkTemperatureBreach(batteryCharacter, 25) == BreachType.NORMAL);
+            Assert.True(TypewiseAlert.checkTemperatureBreach(batteryCharacter, 45) == BreachType.NORMAL);
 
             batteryCharacter.coolingType = CoolingType.MED_ACTIVE_COOLING;
-            Assert.True(Alerter.checkTemperatureBreach(batteryCharacter, 0) == BreachType.NORMAL);
-            Assert.True(Alerter.checkTemperatureBreach(batteryCharacter, 20) == BreachType.NORMAL);
-            Assert.True(Alerter.checkTemperatureBreach(batteryCharacter, 40) == BreachType.NORMAL);
+            Assert.True(TypewiseAlert.checkTemperatureBreach(batteryCharacter, 0) == BreachType.NORMAL);
+            Assert.True(TypewiseAlert.checkTemperatureBreach(batteryCharacter, 20) == BreachType.NORMAL);
+            Assert.True(TypewiseAlert.checkTemperatureBreach(batteryCharacter, 40) == BreachType.NORMAL);
         }
 
 

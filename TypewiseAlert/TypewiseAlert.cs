@@ -8,6 +8,7 @@ namespace TypewiseAlert
         {
             BreachType breachType = checkTemperatureBreach(batteryChar, temperatureInC);
             alertTarget.Send(breachType, printCallback);
+            printCallback("Checking " + breachType);
         }
 
         public static BreachType checkTemperatureBreach(BatteryCharacter batteryChar, double temperatureInC)

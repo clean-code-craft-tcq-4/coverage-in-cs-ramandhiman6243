@@ -23,7 +23,7 @@
             new TemperatureLimitData(CoolingType.MED_ACTIVE_COOLING, 0, 40)
         };
 
-        public static TemperatureLimitData defaultTemperatureLimit = temperatureLimits[0];
+        public static TemperatureLimitData defaultTemperatureLimit = new TemperatureLimitData(CoolingType.NONE, int.MinValue, int.MaxValue);
 
         public static TemperatureLimitData GetLimits(CoolingType coolingType)
         {

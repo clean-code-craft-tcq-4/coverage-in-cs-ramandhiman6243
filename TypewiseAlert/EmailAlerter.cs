@@ -4,8 +4,14 @@ namespace TypewiseAlert
 {
     public class EmailAlerter : IAlerter
     {
-        string recepient = "a.b@c.com";
-        string headerFormat = "To: {0}\n";
+        string recepient;
+        string mailheaderFormat;
+
+        public EmailAlerter(string recepient, string mailheaderFormat)
+        {
+            this.recepient = recepient;
+            this.mailheaderFormat = mailheaderFormat;
+        }
 
         class BreachEmail
         {
@@ -27,7 +33,7 @@ namespace TypewiseAlert
 
         string GetEmailHeader(string recepient)
         {
-            return string.Format(headerFormat, recepient);
+            return string.Format(mailheaderFormat, recepient);
         }
 
         bool HasBreachMessage(BreachType breachType, out string message)
@@ -45,12 +51,17 @@ namespace TypewiseAlert
             return false;
         }
 
-        public void Send(BreachType breachType)
+        string CreateEmailText(string header, string message)
+        {
+            return header + "\n" + message;
+        }
+
+        public void Send(BreachType breachType, Action<string> printCallback)
         {
             if (HasBreachMessage(breachType, out string message))
             {
-                Console.WriteLine(GetEmailHeader(recepient));
-                Console.WriteLine(message);
+                string emailText = CreateEmailText(GetEmailHeader(recepient), message);
+                printCallback(emailText);
             }
         }
     }

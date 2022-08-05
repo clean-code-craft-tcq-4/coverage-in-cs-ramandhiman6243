@@ -4,10 +4,19 @@ namespace TypewiseAlert
 {
     public class ControllerAlerter : IAlerter
     {
-        public void Send(BreachType breachType)
+        ushort header;
+        string outputFormat;
+
+        public ControllerAlerter(ushort header, string outputFormat)
         {
-            const ushort header = 0xfeed;
-            Console.WriteLine("{} : {}\n", header, breachType);
+            this.header = header;
+            this.outputFormat = outputFormat;
+        }
+
+        public void Send(BreachType breachType, Action<string> printCallback)
+        {
+            string output = string.Format(outputFormat, header, breachType);
+            printCallback(output);
         }
     }
 }

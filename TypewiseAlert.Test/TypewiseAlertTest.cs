@@ -78,38 +78,137 @@ namespace TypewiseAlert.Test
         [Fact]
         public void CheckEmailAlerterTooHigh()
         {
-            //In progress
+            string recepient = "a.b@c.com";
+            string mailheaderFormat = "To: {0}\n";
+            string expectedOutput = string.Format(mailheaderFormat, recepient) + "\nHi, the temperature is too high\n";
+
+            BreachType breachType = BreachType.TOO_HIGH;
+
+            string functionOutput = string.Empty;
+            
+            void PrintCallback(string message)
+            {
+                functionOutput = message;
+            }
+
+            EmailAlerter emailAlerter = new EmailAlerter(recepient, mailheaderFormat);
+            emailAlerter.Send(breachType, PrintCallback);
+
+            Assert.Equal(expectedOutput, functionOutput);
         }
 
         [Fact]
         public void CheckEmailAlerterTooLow()
         {
-            //In progress
+            string recepient = "a.b@c.com";
+            string mailheaderFormat = "To: {0}\n";
+            string expectedOutput = string.Format(mailheaderFormat, recepient) + "\nHi, the temperature is too low\n";
+
+            BreachType breachType = BreachType.TOO_LOW;
+
+            string functionOutput = string.Empty;
+
+            void PrintCallback(string message)
+            {
+                functionOutput = message;
+            }
+
+            EmailAlerter emailAlerter = new EmailAlerter(recepient, mailheaderFormat);
+            emailAlerter.Send(breachType, PrintCallback);
+
+            Assert.Equal(expectedOutput, functionOutput);
         }
 
         [Fact]
         public void CheckEmailAlerterNormal()
         {
-            //In progress
+            string recepient = "a.b@c.com";
+            string mailheaderFormat = "To: {0}\n";
+            string expectedOutput = string.Empty;
+
+            BreachType breachType = BreachType.NORMAL;
+
+            string functionOutput = string.Empty;
+
+            void PrintCallback(string message)
+            {
+                functionOutput = message;
+            }
+
+            EmailAlerter emailAlerter = new EmailAlerter(recepient, mailheaderFormat);
+            emailAlerter.Send(breachType, PrintCallback);
+
+            Assert.Equal(expectedOutput, functionOutput);
         }
 
 
         [Fact]
         public void CheckControllerAlerterTooHigh()
         {
-            //In progress
+            ushort header = 0xfeed;
+            string outputFormat = "{0} : {1}\n";
+
+            BreachType breachType = BreachType.TOO_HIGH;
+
+            string expectedOutput = string.Format(outputFormat, header, breachType);
+
+            string functionOutput = string.Empty;
+
+            void PrintCallback(string message)
+            {
+                functionOutput = message;
+            }
+
+            ControllerAlerter controllerAlerter = new ControllerAlerter(header, outputFormat);
+            controllerAlerter.Send(breachType, PrintCallback);
+
+            Assert.Equal(expectedOutput, functionOutput);
         }
 
         [Fact]
         public void CheckControllerAlerterTooLow()
         {
-            //In progress
+            ushort header = 0xfeed;
+            string outputFormat = "{0} : {1}\n";
+
+            BreachType breachType = BreachType.TOO_LOW;
+
+            string expectedOutput = string.Format(outputFormat, header, breachType);
+
+            string functionOutput = string.Empty;
+
+            void PrintCallback(string message)
+            {
+                functionOutput = message;
+            }
+
+            ControllerAlerter controllerAlerter = new ControllerAlerter(header, outputFormat);
+            controllerAlerter.Send(breachType, PrintCallback);
+
+            Assert.Equal(expectedOutput, functionOutput);
         }
 
         [Fact]
         public void CheckControllerAlerterNormal()
         {
-            //In progress
+            ushort header = 0xfeed;
+            string outputFormat = "{0} : {1}\n";
+
+            BreachType breachType = BreachType.NORMAL;
+
+            string expectedOutput = string.Format(outputFormat, header, breachType);
+
+            string functionOutput = string.Empty;
+
+            void PrintCallback(string message)
+            {
+                functionOutput = message;
+            }
+
+            ControllerAlerter controllerAlerter = new ControllerAlerter(header, outputFormat);
+            controllerAlerter.Send(breachType, PrintCallback);
+
+            Assert.Equal(expectedOutput, functionOutput);
         }
     }
 }

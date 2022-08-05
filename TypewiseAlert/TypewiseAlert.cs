@@ -1,11 +1,13 @@
-﻿namespace TypewiseAlert
+﻿using System;
+
+namespace TypewiseAlert
 {
     public class TypewiseAlert
     {
-        public static void checkAndAlert(IAlerter alertTarget, BatteryCharacter batteryChar, double temperatureInC)
+        public static void checkAndAlert(IAlerter alertTarget, BatteryCharacter batteryChar, double temperatureInC, Action<string> printCallback)
         {
             BreachType breachType = checkTemperatureBreach(batteryChar, temperatureInC);
-            alertTarget.Send(breachType);
+            alertTarget.Send(breachType, printCallback);
         }
 
         public static BreachType checkTemperatureBreach(BatteryCharacter batteryChar, double temperatureInC)
